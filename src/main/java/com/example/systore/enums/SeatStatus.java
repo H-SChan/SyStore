@@ -1,5 +1,9 @@
 package com.example.systore.enums;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter @Setter
 public enum SeatStatus {
     RESERVATION("예약"),
     VACANCY("빈자리"),
