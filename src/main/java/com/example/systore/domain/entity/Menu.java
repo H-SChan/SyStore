@@ -26,5 +26,5 @@ public class Menu {
     private String category;
 
     @OneToMany(mappedBy = "menu")
-    private List<Order> orders = new ArrayList<>();
+    private List<Demand> demands = new ArrayList<>();
 }

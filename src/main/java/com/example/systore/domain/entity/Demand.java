@@ -12,17 +12,18 @@ import java.time.LocalDateTime;
 @Builder
 @Getter
 @Entity
-public class Order {
+public class Demand {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
+    @Column(name = "demand_id")
     private Long id;
 
     @CreatedDate
+    @Column
     private LocalDateTime dateTime;
 
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private DemandStatus status;
 
     @ManyToOne
     private Menu menu;
@@ -40,9 +41,9 @@ public class Order {
 
     public void setMenu(Menu menu) {
         if (this.menu != null) {
-            this.menu.getOrders().remove(this);
+            this.menu.getDemands().remove(this);
         }
         this.menu = menu;
-        menu.getOrders().add(this);
+        menu.getDemands().add(this);
     }
 }

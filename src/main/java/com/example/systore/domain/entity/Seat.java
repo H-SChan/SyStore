@@ -21,7 +21,7 @@ public class Seat {
     @Enumerated(EnumType.STRING)
     private SeatStatus status;
 
-    @OneToMany(mappedBy = "table")
-    private List<Order> orders = new ArrayList<>();
+    @OneToMany(mappedBy = "seat")
+    private List<Demand> demands = new ArrayList<>();
 
 }
