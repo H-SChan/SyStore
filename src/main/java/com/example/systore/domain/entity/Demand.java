@@ -1,15 +1,14 @@
 package com.example.systore.domain.entity;
 
-import com.example.systore.enums.OrderStatus;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import com.example.systore.enums.DemandStatus;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
 @Entity

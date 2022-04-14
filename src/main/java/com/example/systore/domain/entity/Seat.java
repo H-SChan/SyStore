@@ -1,15 +1,14 @@
 package com.example.systore.domain.entity;
 
 import com.example.systore.enums.SeatStatus;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 @Getter
 @Entity
