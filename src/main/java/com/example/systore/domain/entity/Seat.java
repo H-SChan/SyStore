@@ -12,10 +12,10 @@ import java.util.List;
 @Builder
 @Getter
 @Entity
-public class Table {
+public class Seat {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "table_id")
+    @Column(name = "seat_id")
     private Long id;
 
     @Enumerated(EnumType.STRING)

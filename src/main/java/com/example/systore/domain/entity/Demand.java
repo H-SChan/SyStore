@@ -28,14 +28,14 @@ public class Order {
     private Menu menu;
 
     @ManyToOne
-    private Table table;
+    private Seat seat;
 
-    public void setTable(Table table) {
-        if (this.table != null) {
-            this.table.getOrders().remove(this);
+    public void setSeat(Seat seat) {
+        if (this.seat != null) {
+            this.seat.getDemands().remove(this);
         }
-        this.table = table;
-        table.getOrders().add(this);
+        this.seat = seat;
+        seat.getDemands().add(this);
     }
 
     public void setMenu(Menu menu) {
