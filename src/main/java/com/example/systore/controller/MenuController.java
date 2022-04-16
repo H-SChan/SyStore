@@ -18,6 +18,6 @@ public class MenuController {
     public Response saveMenu(SaveMenuDto saveMenuDto) {
         menuService.saveMenu(saveMenuDto);
 
-        return new Response(HttpStatus.OK.value(), "성공");
+        return new Response(HttpStatus.OK, "성공");
     }
 }
