@@ -17,28 +17,28 @@ public class MenuController {
 
     private final MenuService menuService;
 
-    @PostMapping("/menu")
+    @PostMapping("/menus")
     public Response saveMenu(SaveMenuDto saveMenuDto) {
         menuService.saveMenu(saveMenuDto);
 
         return new Response(HttpStatus.OK, "성공");
     }
 
-    @GetMapping("/menu")
+    @GetMapping("/menus")
     public ResponseEntity<List<MenuDto>> getMenus() {
         List<MenuDto> menus = menuService.findMenus();
 
         return new ResponseEntity<>(HttpStatus.OK, "성공", menus);
     }
 
-    @GetMapping("/menu/{id}")
+    @GetMapping("/menus/{id}")
     public ResponseEntity<MenuDto> getMenu(@PathVariable Long id) {
         MenuDto menu = menuService.findOne(id);
 
         return new ResponseEntity<>(HttpStatus.OK, "성공", menu);
     }
 
-    @DeleteMapping("/menu/{id}")
+    @DeleteMapping("/menus/{id}")
     public Response deleteMenu(@PathVariable Long id) {
         menuService.deleteMenu(id);
 
