@@ -50,4 +50,12 @@ public class MenuServiceImpl implements MenuService {
                 m -> modelMapper.map(m, MenuDto.class)
         ).toList();
     }
+
+    @Override
+    @Transactional
+    public void deleteMenu(Long id) {
+        menuRepository.delete(menuRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("없는 메뉴입니다.")
+        ));
+    }
 }

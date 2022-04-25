@@ -16,4 +16,7 @@ public interface MenuService {
 
     @Transactional(readOnly = true)
     List<MenuDto> findMenus();
+
+    @Transactional
+    void deleteMenu(Long id);
 }

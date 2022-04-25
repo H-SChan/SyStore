@@ -7,10 +7,7 @@ import com.example.systore.domain.dto.response.ResponseEntity;
 import com.example.systore.service.menu.MenuService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -39,5 +36,12 @@ public class MenuController {
         MenuDto menu = menuService.findOne(id);
 
         return new ResponseEntity<>(HttpStatus.OK, "성공", menu);
+    }
+
+    @DeleteMapping("/menu/{id}")
+    public Response deleteMenu(@PathVariable Long id) {
+        menuService.deleteMenu(id);
+
+        return new Response(HttpStatus.OK, "성공");
     }
 }
