@@ -6,6 +6,8 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,25 +27,29 @@ public class Demand {
     @Enumerated(EnumType.STRING)
     private DemandStatus status;
 
-    @ManyToOne
-    private Menu menu;
+    @ManyToMany
+    private List<Menu> menus = new ArrayList<>();
 
-    @ManyToOne
-    private Seat seat;
+    @ManyToMany
+    private List<Seat> seats = new ArrayList<>();
 
     public void setSeat(Seat seat) {
-        if (this.seat != null) {
-            this.seat.getDemands().remove(this);
+        if (!this.seats.contains((seat))) {
+            this.seats.add(seat);
         }
-        this.seat = seat;
-        seat.getDemands().add(this);
+
+        if (!seat.getDemands().contains(this)) {
+            seat.getDemands().add(this);
+        }
     }
 
     public void setMenu(Menu menu) {
-        if (this.menu != null) {
-            this.menu.getDemands().remove(this);
+        if (!this.menus.contains(menu)) {
+            this.menus.add(menu);
         }
-        this.menu = menu;
-        menu.getDemands().add(this);
+
+        if (!menu.getDemands().contains(this)) {
+            menu.getDemands().add(this);
+        }
     }
 }

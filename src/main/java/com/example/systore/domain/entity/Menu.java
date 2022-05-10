@@ -25,6 +25,16 @@ public class Menu {
 
     private String category;
 
-    @OneToMany(mappedBy = "menu")
+    @ManyToMany(mappedBy = "menus")
     private List<Demand> demands = new ArrayList<>();
+
+    public void setDemands(Demand demand) {
+        if (!this.demands.contains(demand)) {
+            this.demands.add(demand);
+        }
+
+        if (!demand.getMenus().contains(this)) {
+            demand.getMenus().add(this);
+        }
+    }
 }

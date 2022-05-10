@@ -21,7 +21,16 @@ public class Seat {
     @Enumerated(EnumType.STRING)
     private SeatStatus status;
 
-    @OneToMany(mappedBy = "seat")
+    @ManyToMany(mappedBy = "seats")
     private List<Demand> demands = new ArrayList<>();
 
+    public void setDemands(Demand demand) {
+        if (!this.demands.contains(demand)) {
+            this.demands.add(demand);
+        }
+
+        if (!demand.getSeats().contains(this)) {
+            demand.getSeats().add(this);
+        }
+    }
 }
