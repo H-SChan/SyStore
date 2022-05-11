@@ -13,7 +13,8 @@ import java.util.List;
 @Entity
 public class Menu {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "menu_id")
     private Long id;
 
@@ -26,6 +27,9 @@ public class Menu {
     private String category;
 
     @ManyToMany(mappedBy = "menus")
+    @JoinTable(name = "MENU_DEMAND",
+            joinColumns = @JoinColumn(name = "menu_id"),
+            inverseJoinColumns = @JoinColumn(name = "demand_id"))
     private List<Demand> demands = new ArrayList<>();
 
     public void setDemands(Demand demand) {

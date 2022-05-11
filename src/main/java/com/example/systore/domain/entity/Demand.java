@@ -30,20 +30,22 @@ public class Demand {
     @ManyToMany
     private List<Menu> menus = new ArrayList<>();
 
-    @ManyToMany
-    private List<Seat> seats = new ArrayList<>();
+    @OneToOne
+    private Seat seat;
 
-    public void setSeat(Seat seat) {
-        if (!this.seats.contains((seat))) {
-            this.seats.add(seat);
+    public void addSeat(Seat seat) {
+        if (this.seat != null) {
+            this.seat.setDemand(null);
         }
-
-        if (!seat.getDemands().contains(this)) {
-            seat.getDemands().add(this);
-        }
+        this.seat = seat;
+        seat.setDemand(this);
     }
 
-    public void setMenu(Menu menu) {
+    public void setSeat(Seat seat) {
+        this.seat = seat;
+    }
+
+    public void addMenu(Menu menu) {
         if (!this.menus.contains(menu)) {
             this.menus.add(menu);
         }
