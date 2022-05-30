@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -57,5 +58,20 @@ public class MenuServiceImpl implements MenuService {
         menuRepository.delete(menuRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("없는 메뉴입니다.")
         ));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<String> getMenuCategory() {
+        return menuRepository.findDistinctCategory().orElse(new ArrayList<>());
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<MenuDto> getMenusByCategory(String category) {
+        return menuRepository.findAllByCategory(category).orElse(new ArrayList<>())
+                .stream().map(
+                        m -> modelMapper.map(m, MenuDto.class)
+                ).toList();
     }
 }
