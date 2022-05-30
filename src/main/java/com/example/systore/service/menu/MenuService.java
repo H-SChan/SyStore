@@ -19,4 +19,10 @@ public interface MenuService {
 
     @Transactional
     void deleteMenu(Long id);
+
+    @Transactional(readOnly = true)
+    List<String> getMenuCategory();
+
+    @Transactional(readOnly = true)
+    List<MenuDto> getMenusByCategory(String category);
 }

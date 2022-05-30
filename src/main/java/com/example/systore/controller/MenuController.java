@@ -44,4 +44,18 @@ public class MenuController {
 
         return new Response(HttpStatus.OK.value(), "성공");
     }
+
+    @GetMapping("/menus/categories")
+    public ResponseEntity<List<String>> getCategories() {
+        List<String> data = menuService.getMenuCategory();
+
+        return new ResponseEntity<>(data);
+    }
+
+    @GetMapping("/menus/categories/{category}")
+    public ResponseEntity<List<MenuDto>> getMenusByCategory(@PathVariable String category) {
+        List<MenuDto> data = menuService.getMenusByCategory(category);
+
+        return new ResponseEntity<>(data);
+    }
 }
