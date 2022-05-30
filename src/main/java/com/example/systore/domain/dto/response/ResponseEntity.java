@@ -11,4 +11,9 @@ public class ResponseEntity<T> extends Response {
         super(status, message);
         this.data = data;
     }
+
+    public ResponseEntity(T data) {
+        super();
+        this.data = data;
+    }
 }
