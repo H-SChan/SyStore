@@ -21,6 +21,9 @@ public class Seat {
     @Enumerated(EnumType.STRING)
     private SeatStatus status;
 
+    // 좌석 번호
+    private Integer seatNumber;
+
     @OneToOne(mappedBy = "seat")
     private Demand  demand;
 
